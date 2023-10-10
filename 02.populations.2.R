@@ -93,3 +93,7 @@ par(mfrow=c(1,3))    # one row 3 columns
 plot(bei)
 plot(densitymap)
 plot(elev)                  
+
+
+                  
+		  
