@@ -62,4 +62,34 @@ colorRampPalette (c("black", "red", "orange", "yellow")(100)    # R and P are ca
 
 cl <- colorRampPalette (c("black", "red", "orange", "yellow"))(100) 
 plot(densitymap, col=cl)
-                   
+
+cl <- colorRampPalette (c("black", "red", "orange", "yellow"))(4)   # no continuity, clear colours                   
+
+# there are many colors in R we can just open it in google and use any of those - like sandybrown, seagrass etc
+
+# lets build our own colorramp palete     
+cl <- colorRampPalette (c("burlywood", "darkgray", "coral", "darkorchid"))(100)     
+# never use rainbow palette 
+
+
+# let's plot extra information                   
+plot(bei.extra)               # one variable is gradient and other is elevation  
+elev <- bei.extra [[1]]       # this is elevation data - first one so we extract it like this we can also use 
+									            # bei.extra$elev
+plot(elev)                    # plots only elevation 
+
+                  
+#### multiframe 
+par(mfrow=c(1,2))             # this will build empty frame with two slots                                
+plot(elev)
+plot(densitymap)              # if we run all three lines - they show together in the frame - one image with both elev and density map 
+
+par(mfrow=c(2,1))             # by selecting 2,1 this time they will show one on top of the other - 2 rows 1 column    
+plot(elev)
+plot(densitymap)              # makes sense becuse if we go higher in elevataion we have less trees       
+									
+# now we want three images - one next to each other - bei, densitymap, and then elev 
+par(mfrow=c(1,3))    # one row 3 columns 
+plot(bei)
+plot(densitymap)
+plot(elev)                  
