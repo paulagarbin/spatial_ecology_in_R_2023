@@ -58,3 +58,4 @@ plot(ord)            # space defind by ldc1 and ldc2
 # from the table we cannot see how species stay together and grow in the same area - but from the plots it is clear 
 # for that we cannot use the whole dimensions (4 in this case) - we can only use 2 - 71% ones ldc1 and ldc2 and use it for multivariate analysis 
 # in parts of the graph different species staying together in (grassland, wetland, etc.) 
+# it is important to see how species overlap with each other in order to manage their conservation
