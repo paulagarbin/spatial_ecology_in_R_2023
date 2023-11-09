@@ -64,7 +64,7 @@ plot(m1992[[1]])                   # first band in near infra red - range from 0
 4 bits - 16 information 
 
 # it is all 2 elevated on certain point, 2^2, 2^3, (2^4 - 16 information but 4 bits)
-# at 8 bit it is 253 
+# at 8 bit it is 256 
 
 
 # We will use the image to build vegetation index and see how pixels changed in time 
@@ -84,14 +84,47 @@ dvi2006 = m2006 [[1]] - m2006 [[2]]                                         # he
 plot (dvi2006)                            
 plot (dvi2006, col=cl)  
 
+# these images cannot be compared with each other since they are in different ranges 
+# 1992 higher range than in 2006 
+# need to standardise DVI - normalization
+# normalize on top of the range you have - on top of the sum of the two bands
+# dvi - difference between near infra red and infra red divided by their sum 
+
+# NDVI - normalized deviation vegetation index (range from -1 to 1)
+# 230 - 10 / 230 + 10 = 0.91 - range (DVI)   # 1st image 1992
+# 3-1 / 3+1 = 0.5                            # 2nd image 2006 
+
+# 0 - 255 / 0 +255 = -1 
+# 255 - 0 / 255 + 0 = 1 
+
+# if you need to compare images with different bits - you need to use NDVI (not DVI) - it always ranges from -1 to 1
+
+##### NDVI 
+
+ndvi1992 = (m1992 [[1]] - m1992 [[2]]) /  (m1992 [[1]] + m1992 [[2]])  # this is the formula for ndvi - 2 bands 1 minuts the other divided by one plus the other - like above
+ndvi1992 = dvi1992 /  (m1992 [[1]] + m1992 [[2]])
+plot(ndvi1992, col= cl)                                                # new range is from -1 to 1 - now it can be compared to any kind of image
 
 
+ndvi2006 = (m2006 [[1]] - m2006 [[2]]) /  (m2006 [[1]] + m2006 [[2]]) 
+ndvi2006 = dvi2006 /  (m2006 [[1]] + m2006 [[2]])
+plot(ndvi2006, col= cl)     
+
+# lets plot these two together (par) 
+par(mfrow= c(1,2))                     # now we can plot them together and compare since they are at the same range from -1 to 1 (NDVI)
+plot(ndvi1992, col= cl) 
+plot(ndvi2006, col= cl) 
 
 
- 
+# scientifically meaningful image for everyone! - anyone can see this
+clvir <- colorRampPalette(c("violet", "dark blue", "blue", "green", "yellow"))(100)          # specifying a color scheme
 
+par(mfrow= c(1,2))
+plot(ndvi1992, col= clvir)
+plot(ndvi2006, col=clvir)
 
-
-
-
+# speeding up calculation 
+ndvi2006a <- im.ndvi (m2006, 1, 2)      # calculated with ndvi, same thing as above - 1 and 2 mean 1st and 2nd band 
+                                        # function im.ndvi will calculate it itself we dont need to do this ((m2006 [[1]] - m2006 [[2]]) /  (m2006 [[1]] + m2006 [[2]])) 
+plot(ndvi2006a, col=cl)
 
