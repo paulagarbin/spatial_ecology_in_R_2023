@@ -70,7 +70,7 @@ gdif = g2000-g2015                      # no need for [[1]] because it is only o
 dev.off()
 plot(gdif)
 
-difg <- stackg[[1]] - stackg[[4]]       # here we [[]] mark position
+difg <- stackg[[1]] - stackg[[4]]       # here we [[]] mark position in stackg
 plot(difg, col=cldif)                   # losing low temperatures from the middle - that part particularly sensitive to changes 
                                         # since second image had lower values we have minus on the scale - negative change, losing low temperatures 
                                         # higher surface temperature and ice melt in 15 years !
@@ -78,4 +78,19 @@ plot(difg, col=cldif)                   # losing low temperatures from the middl
 # difg <- g2000 - g2015
 
 
-##### EARTH OBSERVATORY OR COPERNICUS - for the project!!!!!!! 
+##### EARTH OBSERVATORY OR COPERNICUS - data for the project!!!!!!! 
+
+### we can use 3 images to make RGB plot 
+# take 2000 and put it in RED channel   # if high values in 2000 - they will become red 
+# 2005 put in the GREEN channel         # if high values in 2005 - they will become green
+# 3rd element in BLUE                   # if high values in 2015 - they will become blue - if it becomes blue-ish means that temperature is higher in the final period
+
+### Excercise: make a RGB plot using different years 
+
+im.plotRGB(stackg, r=1, g=2, b=3)   # western part higher temperatures 
+                                    # green on top - start to increase in 2005 
+                                    # middle - blue-ish - temperature higher in last period - if it was red it would mean temperature was higher in the first period (red band)
+
+# possibility of seeing changes in landscape - monitoring in person is difficult - use satellite imagery 
+
+
