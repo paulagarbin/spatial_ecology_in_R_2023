@@ -59,10 +59,23 @@ plot(g2000, col=clg)
 plot(g2015, col=clg)
 
 
-# stacking the data 
+# stacking the data and plotting all 4 images together 
 stackg <- c(g2000, g2005, g2010, g2015)
 plot(stackg, col=clg)
 
+# period of 2005 was one of the worst for temperature - large increase in temperature in 2003 
+
+#### Excercise: make the difference between the first and the final elements of the stack
+gdif = g2000-g2015                      # no need for [[1]] because it is only one band image
+dev.off()
+plot(gdif)
+
+difg <- stackg[[1]] - stackg[[4]]       # here we [[]] mark position
+plot(difg, col=cldif)                   # losing low temperatures from the middle - that part particularly sensitive to changes 
+                                        # since second image had lower values we have minus on the scale - negative change, losing low temperatures 
+                                        # higher surface temperature and ice melt in 15 years !
+# or 
+# difg <- g2000 - g2015
 
 
-
+##### EARTH OBSERVATORY OR COPERNICUS - for the project!!!!!!! 
