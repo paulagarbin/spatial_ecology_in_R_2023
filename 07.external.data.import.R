@@ -68,3 +68,6 @@ dev.off()
 
 # mato <- rast("matogrosso_l5_lala.jpg") 
 # plotRGB(mato, r=1, g=2, b=3)
+
+# download the package
+install.packages ("ncdf4")
