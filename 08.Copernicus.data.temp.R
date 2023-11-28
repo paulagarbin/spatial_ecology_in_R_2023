@@ -42,3 +42,5 @@ plot(soilm2023_14_crop[[1]], col=cl)       # here nothing is showing up maybe wh
 # plot different image with same extent (EXT) - so you have 2 images of the same extent
 
 
+
+
