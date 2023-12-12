@@ -101,7 +101,11 @@ tabout
 #   class p1992 p2006
 # 1 forest 83.08 45.31
 # 2  human 16.91 54.69
+# balanced in 2006 
 
+# now we need 2 more things 
+# library(ggplot2)
+# library(patchwork)
 
 # now we will make final plot
 library(ggplot2)
@@ -111,11 +115,20 @@ library(ggplot2)
 # final plot
 p1 <- ggplot(tabout, aes(x=class, y=p1992, color=class)) + geom_bar(stat="identity", fill="white")
 p2 <- ggplot(tabout, aes(x=class, y=p2006, color=class)) + geom_bar(stat="identity", fill="white")
-p1+p2
-
-# rather then using continuous data we classified it to 2 and plotted it
+p1+p2           # if we want to see the plots one next to each other 
+                # different scales so we can't understand the impact - used in newspaper to soften the news  
+                # rather then using continuous data we classified it to 2 and plotted it
 
 # final plot - rescaled
-p1 <- ggplot(p, aes(x=cover, y=perc1992, color=cover)) + geom_bar(stat="identity", fill="white") + ylim(c(0,100))
-p2 <- ggplot(p, aes(x=cover, y=perc2006, color=cover)) + geom_bar(stat="identity", fill="white") + ylim(c(0,100))
+p1 <- ggplot(tabout, aes(x=class, y=p1992, color=class)) + geom_bar(stat="identity", fill="white") + ylim(c(0,100))      # limit in y different than above - rescale
+p2 <- ggplot(tabout, aes(x=class, y=p2006, color=class)) + geom_bar(stat="identity", fill="white") + ylim(c(0,100))
 p1+p2
+
+# this graph shows great part of the forest that was lost from 1992 until 2006 
+# in statistics it has to be the same scale to be able to visualise the change 
+
+#### This lesson takeaway:
+# we wanted to measure how big the change in Matogrosso was - how much forest was lost in percentage % 
+# take 2 images and made a graph to see the change 
+
+
