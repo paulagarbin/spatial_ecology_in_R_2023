@@ -69,3 +69,4 @@ plot(stacknv, col=viridis)
 sd7 <- focal(nir, matrix(1/49, 7, 7), fun=sd)
 stacknv <- c(nir, sd3, sd5, sd7)
 plot(stacknv, col=viridis)
+
