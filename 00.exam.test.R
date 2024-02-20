@@ -43,6 +43,66 @@ ggplot2020<-ggplot() +
 
 ggplot2015
 ggplot2020
+
+# Difference between years to see the changes 
+
+dif2015_2020 <- fcover_layer2020 - fcover_layer2015
+
+# Plotting the differences using ggplot2
+
+ggplot_dif2015_2020 <- ggplot() + 
+  geom_raster(dif2015_2020, mapping = aes(x=x,  y = y, fill = FCOVER)) +
+  scale_fill_viridis(option = "cividis") +
+  ggtitle("FCOVER Change: 2015 - 2020")
+
+#pixel estimation
+#total pixel estimation
+total_pixels_2015 <- ncell(fcover_layer2015)
+total_pixels_2020 <- ncell(fcover_layer2020)
+
+# Calculation of n. of pixels for values in FCOVER higher than 0 
+# Data extraction and exclusion of missing values
+vegetation_pixels_2015 <- sum(fcover2015.crop[["FCOVER"]][] > 0, na.rm = TRUE)
+vegetation_pixels_2020 <- sum(fcover2020.crop[["FCOVER"]][] > 0, na.rm = TRUE)
+
+# Calculation of the percentage of vegetation cover over the total pixels
+percentage_cover_2015 <- (vegetation_pixels_2015 / total_pixels_2015) * 100
+percentage_cover_2020 <- (vegetation_pixels_2020 / total_pixels_2020) * 100
+
+##############################################################################
+
+#NDVI assesment
+### Temporal analysis of Vegetation Cover in the area of Nile Delta for 2015-2020
+## Importing data from Copernicus with function: rast()
+
+NDVI_2015 <- rast("NDVIdecember2015.nc")
+NDVI_2019 <- rast("NDVIdecember2019.nc")
+
+# Cutting the map define the extent of the research
+NDVI2015.crop <- crop(NDVI_2015, ext)
+NDVI2019.crop <- crop(NDVI_2019, ext)
+
+#extracting FCOVER layer from the data
+NDVI_layer2015 <- NDVI2015.crop[["NDVI"]]
+NDVI_layer2019 <- NDVI2019.crop[["NDVI"]]
+
+plot(NDVI_layer2015)
+plot(NDVI_layer2019)
+
+# ggplot
+ggplotNDVI2015<-ggplot() + 
+  geom_raster(NDVI_layer2015, mapping = aes(x=x,  y = y, fill = NDVI)) +
+  scale_fill_viridis(option = "mako") +
+  ggtitle("Normalized Difference Vegetation Index 2015")
+
+ggplotNDVI2019<-ggplot() + 
+  geom_raster(NDVI_layer2019, mapping = aes(x=x,  y = y, fill = NDVI)) +
+  scale_fill_viridis(option = "mako") +
+  ggtitle("Normalized Difference Vegetation Index 2019")
+
+ggplotNDVI2015
+ggplotNDVI2019
+
 ############################################################################################################
 
 
