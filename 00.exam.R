@@ -5,7 +5,6 @@
 library (ncdf4)      # to import.nc files 
 library (terra)      # needed for importing data from outside 
 library (viridis)    # inclusive color palette for color blind people
-library (imageRy)    # to analyse images 
 library (ggplot2)    # to create appropriate graphs 
 library (tidyterra)  # interface between terra and tidyverse
 
