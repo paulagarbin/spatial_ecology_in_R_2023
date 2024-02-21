@@ -104,7 +104,7 @@ percentage_cover_2019 - percentage_cover_2015
 summer_2015 <- rast("fcover2015summer.nc")
 winter_2015 <- rast("fcover2015winter.nc")
 
-# Cutting the map define the extent of the research
+# Cutting the map to define the extent of the research
 
 ext <- c(29,33,29.5,32) 
 summer_2015.crop <- crop(summer_2015, ext)
@@ -187,7 +187,7 @@ percentage_cover_winter2015  # 11.96 %
 summer_2019 <- rast("fcover2019summer.nc")
 winter_2019 <- rast("fcover2019winter.nc")
 
-# Cutting the map define the extent of the research
+# Cutting the map to define the extent of the research
 
 ext <- c(29,33,29.5,32) 
 summer_2019.crop <- crop(summer_2019, ext)
@@ -270,7 +270,7 @@ percentage_cover_winter2019   # 9.95 %
 NDVI_2015 <- rast("NDVIdecember2015.nc")
 NDVI_2019 <- rast("NDVIdecember2019.nc")
 
-# Cutting the map define the extent of the research
+# Cutting the map to define the extent of the research
 
 NDVI2015.crop <- crop(NDVI_2015, ext)
 NDVI2019.crop <- crop(NDVI_2019, ext)
