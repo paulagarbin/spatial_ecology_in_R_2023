@@ -3,10 +3,11 @@
 # Packages
 
 library (ncdf4)      # to import.nc files 
-library (terra)      # needed for importing data from outside 
+library (terra)      # geospatial data analysis for raster data
 library (viridis)    # inclusive color palette for color blind people
 library (ggplot2)    # to create appropriate graphs 
 library (tidyterra)  # interface between terra and tidyverse
+                     # to avoid issues with ggplot, error in fortify
 
 # Setting working directory
 
