@@ -22,7 +22,7 @@ setwd("C:/Users/Paula/Desktop/Spatial ecology in R/Project")
 fcover_2015 <- rast("fcover2015.nc")
 fcover_2019 <- rast("fcover2019.nc")
 
-# Cutting the map define the extent of the research
+# Cutting the map to define the extent of the research
 
 ext <- c(29,33,29.5,32) 
 fcover2015.crop <- crop(fcover_2015, ext)
